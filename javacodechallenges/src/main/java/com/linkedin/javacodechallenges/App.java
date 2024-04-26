@@ -15,19 +15,20 @@ public class App {
                 .collect(Collectors.toMap(s -> s, n -> 0));
         attendeesMapping.values()
                 .forEach(list -> list.stream()
-                                    .filter(student -> studentsEventCount.containsKey(student))
-                                    .forEach(filteredStudent -> studentsEventCount.put(filteredStudent, 
-                                        studentsEventCount.get(filteredStudent)+1)));
+                        .filter(student -> studentsEventCount.containsKey(student))
+                        .forEach(filteredStudent -> studentsEventCount.put(filteredStudent,
+                                studentsEventCount.get(filteredStudent) + 1)));
         return studentsEventCount.entrySet().stream()
-                                            .filter(map -> map.getValue()<2)
-                                            .map(findStudentsWithIncompleteVolunteerEventsMap -> findStudentsWithIncompleteVolunteerEventsMap
-                                            .getKey())
-                                            .toList();
+                .filter(map -> map.getValue() < 2)
+                .map(findStudentsWithIncompleteVolunteerEventsMap -> findStudentsWithIncompleteVolunteerEventsMap
+                        .getKey())
+                .toList();
     }
 
     public static List<String> findStudentsWithIncompleteVolunteerEventsImperativeProgramming(
             List<String> students,
             Map<String, List<String>> attendeesMapping) {
+        List<String> result = new ArrayList<>();
         int minimumEvents = 2; // Minimum number of events required
         List<String> incompleteStudents = new ArrayList<>();
 
@@ -45,7 +46,7 @@ public class App {
 
         return incompleteStudents;
     }
-    
+
     public static void main(String[] args) {
         List<String> students = List.of("Sally", "Polly", "Molly",
                 "Tony", "Harry");
